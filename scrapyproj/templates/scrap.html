@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+{% block content%}
+
+<div>
+    {%for d in data%}
+    <div>
+        {{d.PageLink}}
+        <p>
+            {{d.Text}}
+        </p>
+        
+    </div>
+    <br>
+
+    {% endfor %}
+</div>
+
+{% endblock %}
