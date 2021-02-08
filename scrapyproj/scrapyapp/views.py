@@ -36,9 +36,12 @@ def scrap(request):
        
         subLinkContent=subPageUrl.read().decode("utf-8")
         sSoup=BeautifulSoup(subLinkContent,"html.parser")
-        pageText=sSoup.get_text()
+        #pageText=sSoup.get_text()
+        pageText=sSoup(text=lambda t: text in t)
+        #sSoup.body.findAll(text=re.compile('^'+text+'$'))
 
-        if(pageText.find(text)!=-1):
+        #if(pageText.find(text)!=-1):
+        if pageText:   
             #found the string
             obj={'PageLink':fullUrl,'Text':pageText}
             output.append(obj)
