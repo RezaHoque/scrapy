@@ -1,0 +1,44 @@
+{% extends 'base.html'%}
+{% block content%}
+    <form action="register" method="POST">
+
+        {% csrf_token %}
+        <div class="row justify-content-md-center" style="padding: 10px;">
+            <div class="col col-lg-6">
+            <div class="mb-3">
+                <input type="text" class="form-control form-control-lg" name="userName" placeholder="User name" required>
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control form-control-lg" name="firstName" placeholder="First name" required>
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control form-control-lg" name="lastName" placeholder="Last name" required>
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control form-control-lg"  name="password" placeholder="password" required>
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control form-control-lg" name="confirmPassword" placeholder="Password again">
+            </div>
+            <div class="mb-3">
+                <input type="email" class="form-control form-control-lg" name="email" placeholder="email" required>
+            </div>
+            <div class="mb-3">
+                <input type="submit" class="btn btn-success">
+            </div>
+            </div>
+            
+        </div>
+        <div class="row justify-content-md-center" style="padding: 10px;">
+            <div class="col col-lg-6">
+                {% for m in messages %}
+                    <h3>{{m}}</h3>
+                {% endfor %}
+            </div>
+            
+        </div>
+        
+    </div>
+    </form>
+
+    {% endblock %}
