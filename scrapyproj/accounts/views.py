@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -20,10 +21,6 @@ def login(request):
     else:
         return render(request,'login.html')
         
-
-
-
-
 def register(request):
     if request.method=='POST':
         fname=request.POST['firstName']
@@ -54,3 +51,8 @@ def register(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
+
+@login_required(login_url='/accounts/login')
+def users(request):
+    users=User.objects.all
+    return render(request,'users.html')
